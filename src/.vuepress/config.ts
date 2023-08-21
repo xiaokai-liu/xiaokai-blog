@@ -3,7 +3,7 @@ import { getDirname, path } from "@vuepress/utils";
 import theme from "./theme.js";
 
 export default defineUserConfig({
-  base: "/blog/",
+  base: "/",
 
   lang: "zh-CN",
   title: "",
