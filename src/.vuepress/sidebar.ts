@@ -1,53 +1,33 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
-  "/": [
-    "",
-    // {
-    //   text: "如何使用",
-    //   icon: "laptop-code",
-    //   prefix: "demo/",
-    //   link: "demo/",
-    //   children: "structure",
-    // },
-    //  {
-    //   text: "文章",
-    //   icon: "book",
-    //   prefix: "posts/",
-    //   children: "structure",
-    // },
+  "/css/": [
     {
       text: "css相关",
       icon: "book",
-      prefix: "css/",
-      link: 'css/',
-      children: "structure",
+      prefix: "",
+      children: [
+        {
+          text: '基础',
+          prefix: "base",
+          children: 'structure',
+        },
+        {
+          text: '高级',
+          prefix: "super",
+          children: 'structure',
+        }
+      ],
     },
+  ],
+  "/js/": [
     {
       text: "js相关",
       icon: "book",
-      prefix: "js/",
+      prefix: "",
+      link: "",
       children: "structure",
-    },
-    {
-      text: "vue相关",
-      icon: "book",
-      prefix: "vue/",
-      children: "structure",
-    },
-    {
-      text: "react相关",
-      icon: "book",
-      prefix: "react/",
-      children: "structure",
-    },
-    {
-      text: "其它",
-      icon: "book",
-      prefix: "other/",
-      children: "structure",
-    },
-    // "intro",
-    // "slides",
-  ],
+    }
+  ]
+  
 });
