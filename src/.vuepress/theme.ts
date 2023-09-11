@@ -128,7 +128,24 @@ export default hopeTheme({
       vPre: true,
       vuePlayground: true,
     },
-
+    components: {
+      components: [
+        "ArtPlayer",
+        // "AudioPlayer",
+        // "Badge",
+        // "BiliBili",
+        "CodePen",
+        // "PDF",
+        // "Replit",
+        // "Share",
+        // "SiteInfo",
+        // "StackBlitz",
+        // // "VidStack",
+        // "VideoPlayer",
+        // "XiGua",
+        // "YouTube",
+      ],
+    }
     // uncomment these if you want a PWA
     // pwa: {
     //   favicon: "/favicon.ico",

@@ -10,12 +10,12 @@ export default sidebar({
         {
           text: '基础',
           prefix: "base",
-          children: 'structure',
+          children: ['1.md','2.md','3.md','4.md','5.md'],
         },
         {
           text: '高级',
           prefix: "super",
-          children: 'structure',
+          children: ['1.md','2.md','3.md','4.md'],
         }
       ],
     },
