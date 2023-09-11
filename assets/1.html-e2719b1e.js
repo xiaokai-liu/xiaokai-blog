@@ -1,1 +1,0 @@
-import{_ as s,o as c,c as t,a as e,b as a}from"./app-dc493d09.js";const o={},r=e("h1",{id:"css常用布局",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#css常用布局","aria-hidden":"true"},"#"),a(" css常用布局")],-1),_=[r];function n(d,i){return c(),t("div",null,_)}const l=s(o,[["render",n],["__file","1.html.vue"]]);export{l as default};
