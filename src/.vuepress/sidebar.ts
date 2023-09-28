@@ -25,8 +25,18 @@ export default sidebar({
       text: "js相关",
       icon: "book",
       prefix: "",
-      link: "",
-      children: "structure",
+      children: [
+        {
+          text: '基础',
+          prefix: "基础",
+          children: ['1.md','2.md','3.md','4.md','5.md','6.md','7.md','8.md'],
+        },
+        {
+          text: '高级',
+          prefix: "高级",
+          children: ['1.md','2.md','3.md','4.md'],
+        }
+      ],
     }
   ]
   
