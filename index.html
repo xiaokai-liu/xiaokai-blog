@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+    
+    <script>
+        //匹配日期格式，表达式中的\1代表重复(\-|\/|.)
+        var rgx = /\d{4,5}/g
+        console.log(rgx.exec("m98234577m"),rgx.exec("m98234577m"))          // true
+        // const str="Reading and Writing"
+        // const pattern=/\b([a-zA-Z]+)ing\b/g
+        // let matches
+        // while(matches=pattern.exec(str)){
+        // console.log(matches.index +' '+ matches[0] + ' ' + matches[1]);
+        // }
+    </script>
+</body>
+</html>
