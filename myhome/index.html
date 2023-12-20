@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> </title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    #semi {
+      /* height: 456px; */
+      position: absolute;
+      height: 100vh;
+      width: 100%;
+    }
+    #canvas {
+      position: absolute;
+    }
+    body {
+      position: relative;
+    }
+    /* @custom-media --motionOK (prefers-reduced-motion: no-preference) */
+    @media screen and (prefers-reduced-motion: no-preference){ 
+      .threeD-button-set {
+          will-change: transform;
+          transition: transform .1s ease;
+          animation: rotate-y 5s ease-in-out infinite;
+      }
+      .threeD-button-set::after,
+      .threeD-button-set::before {
+        transition: transform .1s ease-out;
+      }
+      .threeD-button-set::after {
+        transition-duration: .5s
+      }
+      .threeD-button-set::before {
+        transition-duration: .3s
+      }
+    }
+    @keyframes rotate-y {
+      50% {
+        transform: rotateY(15deg) rotateX(-6deg);
+      }
+    }
+    body {
+      perspective: 90vw;
+    }
+    .card {
+     
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      z-index: 10;
+    }
+    .threeD-button-set {
+      position: absolute;
+      z-index: 2;
+      left: 5%;
+      top: 100px;
+      /* transform: translateY(-50%); */
+      --y:;
+      --x:;
+      --distance: 1px;
+      --theme: hsl(180 100% 50%);
+      --theme-bg: hsl(180 100% 50% / 25%);
+      --theme-bg-hover: hsl(180 100% 50% / 40%);
+      --theme-text: white;
+      --theme-shadow: hsl(180 100% 10% / 25%);
+
+      --_max-rotateY: 10deg;
+      --_max-rotateX: 15deg;
+      --_btn-bg: var(--theme-bg);
+      --_btn-bg-hover: var(--theme-bg-hover);
+      --_btn-text: var(--theme-text);
+      --_btn-text-shadow: var(--theme-shadow);
+      --_bounce-ease: cubic-bezier(.5, 1.75, .75, 1.25);
+      /* remove <ul> margins */
+      margin: 0;
+
+      /* vertical rag-right layout */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.5vh;
+      transform-style: preserve-3d;
+      transform: 
+      rotateY(
+        clamp(
+          calc(var(--_max-rotateY) * -1),
+          var(--y),
+          var(--_max-rotateY)
+        )
+      )
+      rotateX(
+        clamp(
+          calc(var(--_max-rotateX) * -1),
+          var(--x),
+          var(--_max-rotateX)
+        )
+      )
+    }
+    .threeD-button-set > li {
+      display: inline-flex;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .threeD-button-set button {
+      appearance: none;
+      outline: none;
+      border: none;
+      background-color: var(--_btn-bg);
+      color: var(--_btn-text);
+      text-shadow: 0 1px 1px var(--_btn-text-shadow);
+      font-size: 5vmin;
+      font-family: Audiowide;
+      padding-block: .75ch;
+      padding-inline: 2ch;
+      border-radius: 5px 20px;
+      transform: translateZ(var(--distance));
+      transform-style: preserve-3d;
+    }
+    .threeD-button-set button::after,
+    .threeD-button-set button::before {
+      /* 创建空元素 */
+      content: '';
+      opacity: .8;
+      /* 掩盖父体 (button) */
+      position: absolute;
+      inset: 0;
+      /* 样式元素的边框强调 */
+      border: 1px solid var(--theme);
+      border-radius: 5px 20px;
+    }
+    .threeD-button-set button::before {
+      border-width: 3px;
+      transform: translateZ(calc(var(--distance) / 3 * -1));
+    }
+    .threeD-button-set button::after {
+      border-width: 3px;
+      transform: translateZ(calc(var(--distance) / 3));
+    }
+    .threeD-button-set button:is(:hover, :focus-visible):not(:active) {
+       /* 悬停/聚焦时微妙的距离和bg颜色变化 */
+        --distance: 15px;
+        background-color: var(--_btn-bg-hover);
+
+      /* 如果运动没有问题，设置过渡，增加距离 */
+      @media screen and (prefers-reduced-motion: no-preference) {
+        --distance: 3vmax;
+        transition-timing-function: var(--_bounce-ease);
+        transition-duration: .4s;
+
+        /* &::after  { transition-duration: .5s }
+        &::before { transition-duration: .3s } */
+      }
+    }
+    .threeD-button-set button::before:is(:hover, :focus-visible):not(:active) {
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition-duration: .3s;
+      }
+    }
+    .threeD-button-set button::after:is(:hover, :focus-visible):not(:active) {
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition-duration: .5s;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="canvas">
+  
+</div>
+<ul class="threeD-button-set">
+  <li><button>New Game</button></li>
+  <li><button>Continue</button></li>
+  <li><button>My Blog</button></li>
+  <li><button>About me</button></li>
+  <li><button>Quit</button></li>
+</ul>
+<div id="semi"></div>
+
+<!-- partial -->
+  <script src='three.min.js'></script>
+  <script src="./nipplejs.js"></script>
+  <script  src="./script.js"></script>
+
+    <script>
+      const menu = document.querySelector('.threeD-button-set')
+      const menuRect = menu.getBoundingClientRect()
+      const { matches:motionOK } = window.matchMedia(
+        '(prefers-reduced-motion: no-preference)'
+      )
+      const getAngles = (clientX, clientY) => {
+        const { x, y, width, height } = menuRect
+
+        const dx = clientX - (x + 0.5 * width)
+        const dy = clientY - (y + 0.5 * height)
+
+        return {dx,dy}
+      }
+      if (motionOK) {
+        window.addEventListener('mousemove', ({target, clientX, clientY}) => {
+          const {dx,dy} = getAngles(clientX, clientY)
+
+          menu.attributeStyleMap.set('--x', `${dy / 20}deg`)
+          menu.attributeStyleMap.set('--y', `${dx / 20}deg`)
+        })
+      }
+    </script>
+
+</body>
+</html>
