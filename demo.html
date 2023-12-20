@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function myDecorator(target, name, descriptor) {
+        //     console.log(target, name, descriptor);
+        //     let oldValue = descriptor.value;
+        //     descriptor.value = function(name = 'default') {
+        //         return oldValue.apply(this, arguments);
+        //     }
+        //     return descriptor;
+        // }
+        // class MyClass{
+        //     @myDecorator
+        //     myMethod(name) {
+        //         console.log(`hello ${name}`);
+        //     }
+        // }
+        // let myObject = new MyClass();
+        // myObject.myMethod(); // hello default
+        // myObject.myMethod('world'); // hello world
+        function validateMobile(str) {
+            return /^[1][0-9]{10}$/.test(str) &&
+                str.replace(/(\d{3})(\d{4})(\d{4})/, (rs,$1,$2,$3) => {
+                    console.log(rs,$1,$2,$3)
+                    return `${$1}****${$3}`
+                })
+            }
+            validateMobile('13886139407')
+
+           console.log( "😄😄".split(/(?:)/u))
+    </script>
+</body>
+</html>

@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script> -->
 </head>
 <body>
-    
+    <span style="color:red">a<span style="color:red">bc</span></span><span style="color:red">a<span style="color:red">bc</span></span>c<span style="color:red">a<span style="color:red">bc</span></span>bacdcabacdab
     <script>
-        //匹配日期格式，表达式中的\1代表重复(\-|\/|.)
-        var rgx = /\d{4,5}/g
-        console.log(rgx.exec("m98234577m"),rgx.exec("m98234577m"))          // true
-        // const str="Reading and Writing"
-        // const pattern=/\b([a-zA-Z]+)ing\b/g
-        // let matches
-        // while(matches=pattern.exec(str)){
-        // console.log(matches.index +' '+ matches[0] + ' ' + matches[1]);
+        let text = 'abcabccabcbacdcabacdab'
+        // // text.replace('abc', 8888)
+        let match=['abc','cba','bc']
+        const render = text
+        match.forEach(item => {
+            let reg = new RegExp(`${item}`, 'g')
+            render =  render.replace(reg, `<span style="color:red">${item}</span>`)
+        })
+        console.log(render)
+        // var highLight = (text, keyword ) => {
+        //     return text.split(keyword).flatMap(str =>{
+        //             return [`<span style={{ color: 'red', fontWeight: 'bold' }}>${keyword}</span>`, str]
+        //         }
+        //     )
+        //     .slice(1);
         // }
+        // var result =  match.forEach(item => {
+        //     console.log(item)
+        //     console.log(highLight(text,item))
+        //     return highLight(text, item)
+        // })
+        // console.log(result,'res')
     </script>
 </body>
 </html>
